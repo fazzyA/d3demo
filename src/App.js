@@ -1,29 +1,50 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import * as d3 from 'd3'
+import { csv, arc, pie } from 'd3'
 
-const csvUrl = "https://gist.githubusercontent.com/Sir-Unkie/8e7a83acaab32c3f6aa6224aea3c3b6c/raw/2179315d0abb1e2dfdaea0e39b19080b0e1a53ca/" 
+const csvUrl =
+  'https://gist.githubusercontent.com/curran/b236990081a24761f7000567094914e0/raw/cssNamedColors.csv';
 
-const message = data => {
-  let msg ='Total data weight: ';
-  msg = msg + Math.round(d3.csvFormat(data).length/1024) + 'kb'
-  return msg
-}
-function App() {
+const width = 960;
+const height = 500;
+const centerX = width / 2;
+const centerY = height / 2;
 
+const pieArc = arc()
+  .innerRadius(0)
+  .outerRadius(width)
+
+const App = () => {
 
   const [data, setData] = useState(null)
 
   useEffect(() => {
-    d3.csv(csvUrl).then(data => setData(data))
-    .catch(e=>console.log(e))
+    csv(csvUrl).then(setData)
+      .catch(e => console.log(e))
   }, [])
-  console.log(data)
+
+  if (!data) {
+    return <pre>'Loading....'</pre>;
+  }
+  const colorPie = pie().value(1);
   return (
-    <div className="App">
-      {data ? message(data) : 'loading'}
-    </div>
-  );
+    <svg width={width} height={height}>
+      <g transform={`translate(${centerX},${centerY})`}>
+        {colorPie(data).map(d => (
+          <path fill={d.data['RGB hex value']} d={pieArc(d)} />
+        ))}
+      </g>
+    </svg>);
 }
+// To compute the arcs manually (without d3.pie):
+// data.map((d, i) => (
+//   <path
+//     fill={d['RGB hex value']}
+//     d={pieArc({
+//       startAngle: (i / data.length) * 2 * Math.PI,
+//       endAngle: ((i + 1) / data.length) * 2 * Math.PI
+//     })}
+//   />
+// ))
 
 export default App;
