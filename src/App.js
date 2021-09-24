@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { csv, arc, pie } from 'd3'
+import { message } from './Message'
 
 const csvUrl =
   'https://gist.githubusercontent.com/curran/b236990081a24761f7000567094914e0/raw/cssNamedColors.csv';
@@ -27,14 +28,20 @@ const App = () => {
     return <pre>'Loading....'</pre>;
   }
   const colorPie = pie().value(1);
+console.log(data);
   return (
-    <svg width={width} height={height}>
-      <g transform={`translate(${centerX},${centerY})`}>
-        {colorPie(data).map(d => (
-          <path fill={d.data['RGB hex value']} d={pieArc(d)} />
-        ))}
-      </g>
-    </svg>);
+    <>
+<h4>CSV CSS Color Data in form of Radial Burst Using D3</h4>
+      <div>{message(data)}</div>
+      <div>The data which is visualized below is <a href="https://gist.github.com/curran/b236990081a24761f7000567094914e0/">here</a></div>
+<br></br>      <svg width={width} height={height}>
+        <g transform={`translate(${centerX},${centerY})`}>
+          {colorPie(data).map(d => (
+            <path fill={d.data['RGB hex value']} d={pieArc(d)} />
+          ))}
+        </g>
+      </svg>
+    </>);
 }
 // To compute the arcs manually (without d3.pie):
 // data.map((d, i) => (
