@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 import { scaleBand, scaleLinear, max, format } from 'd3';
 import { useData } from './useData';
 import { AxisBottom } from './AxisBottom';
@@ -37,6 +37,9 @@ const BarApp = () => {
     .range([0, innerWidth]);
 
   return (
+    <>
+    <h4>Population Data in Bar Chart Using D3</h4>
+
     <svg width={width} height={height}>
       <g transform={`translate(${margin.left},${margin.top})`}>
         <AxisBottom
@@ -63,6 +66,7 @@ const BarApp = () => {
         />
       </g>
     </svg>
+    </>
   );
 };
 export default BarApp

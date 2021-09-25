@@ -36,7 +36,7 @@ export default function App() {
             <RadialApp />
           </Route>
           <Route path="/">
-            <RadialApp />
+            <BarApp />
           </Route>
         </Switch>
       </div>
