@@ -6,6 +6,7 @@ import {
   Link
 } from "react-router-dom";
 import BarApp from "./components/BarChart/BarApp";
+import PieChart from "./components/Pie/PieChart";
 import RadialApp from "./components/RadialBurst/RadialApp";
 
 export default function App() {
@@ -21,7 +22,10 @@ export default function App() {
               <Link to="/barchart">Bar Chart</Link>
             </li>
             <li>
-              <Link to="/piechart">Pie Chart</Link>
+              <Link to="/radial">Radial Chart</Link>
+            </li>
+            <li>
+              <Link to="/pie">Pie Chart</Link>
             </li>
           </ul>
         </nav>
@@ -32,8 +36,11 @@ export default function App() {
           <Route path="/barchart">
             <BarApp/>
           </Route>
-          <Route path="/piechart">
+          <Route path="/radial">
             <RadialApp />
+          </Route>
+          <Route path="/pie">
+            <PieChart />
           </Route>
           <Route path="/">
             <BarApp />
