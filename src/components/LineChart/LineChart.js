@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
-import * as d3 from 'd3';
 
 // import './index.css';
 
 function LineChart(props) {
-  const { data, width, height } = props;
+  const { data } = props;
 
   useEffect(() => {
     drawChart();

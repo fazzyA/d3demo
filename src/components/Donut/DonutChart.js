@@ -3,7 +3,7 @@ import { pie } from 'd3'
 import Donut from './DonutSVG';
 
 const DonutChart = () => {
-    const data1 = [1, 1, 2, 3, 5, 8, 13, 21];
+    // const data1 = [1, 1, 2, 3, 5, 8, 13, 21];
     const data = [
         { "data": 1, "value": 1, "index": 6, "startAngle": 6.050474740247008, "endAngle": 6.166830023713296, "padAngle": 0 },
         { "data": 1, "value": 1, "index": 7, "startAngle": 6.166830023713296, "endAngle": 6.283185307179584, "padAngle": 0 },

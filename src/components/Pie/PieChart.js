@@ -1,9 +1,8 @@
 import React from 'react'
-import { pie } from 'd3'
 import Pie from './PieSVG';
 
 const PieChart = () => {
-    const data1 = [1, 1, 2, 3, 5, 8, 13, 21];
+    // const data1 = [1, 1, 2, 3, 5, 8, 13, 21];
     const data = [
         { "data": 1, "value": 1, "index": 6},
         { "data": 1, "value": 1, "index": 7},
