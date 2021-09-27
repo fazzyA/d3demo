@@ -6,6 +6,8 @@ import {
   Link
 } from "react-router-dom";
 import BarApp from "./components/BarChart/BarApp";
+import DonutChart from "./components/Donut/DonutChart";
+import Line from "./components/LineChart/Line";
 import PieChart from "./components/Pie/PieChart";
 import RadialApp from "./components/RadialBurst/RadialApp";
 
@@ -27,6 +29,12 @@ export default function App() {
             <li>
               <Link to="/pie">Pie Chart</Link>
             </li>
+            <li>
+              <Link to="/donut">Donut Chart</Link>
+            </li>
+            <li>
+              <Link to="/line">Line Chart</Link>
+            </li>
           </ul>
         </nav>
 
@@ -41,6 +49,12 @@ export default function App() {
           </Route>
           <Route path="/pie">
             <PieChart />
+          </Route>
+          <Route path="/donut">
+            <DonutChart />
+          </Route>
+          <Route path="/line">
+            <Line />
           </Route>
           <Route path="/">
             <BarApp />
